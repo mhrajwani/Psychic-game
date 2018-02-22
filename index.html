@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game by MO Rajwani</title>
+</head>
+<body>
+    <h1>The psychic game</h1>
+    <div id="div1"> Guess what letter im thinking of</div>
+    <br />
+    <div id="div2"> Wins: 0</div>
+    <br />
+    <div id="div3"> Losses: 0</div>
+    <br />
+    <div id="div4"> Guesses Left: 9</div>
+    <br />
+    <div id="div5"> Your guesses so far : </div>
+    <br />
+
+    <script>
+
+    var guess = "abcdefghijklmnopqurstuvwxyz";
+    
+    var guesses = 9;
+    var wins = 0;
+    var losses = 0;
+    var keyGuessed = [];
+    
+    // Generate Random letter 
+    function randomLetter() {
+    return guess.substr( Math.floor(Math.random() * 27), 1);
+}
+
+    var compGuess = randomLetter();
+    console.log("computer guessed letter: " + compGuess);
+
+   
+    document.onkeyup = function(event) {
+    var userGuess = event.key;
+    console.log("user guessed letter: " + userGuess);
+    
+    //Make the user guess in lower case
+    userGuess.toLocaleLowerCase();
+
+    // check user hasnt made same guess again;
+
+    if (userGuess === compGuess){
+        wins++;
+        keyGuessed = [];
+        guesses = 9;
+        compGuess = randomLetter();
+
+    }else if (userGuess != compGuess && guesses != 1){
+        guesses--;
+
+    }else{
+        losses++;
+        keyGuessed = [];
+        guesses = 9;
+        compGuess = randomLetter();
+    }
+    keyGuessed.push(userGuess);
+
+    document.getElementById("div2").innerHTML = "Wins: " + wins;
+    document.getElementById("div3").innerHTML = "losses: " + losses;
+    document.getElementById("div4").innerHTML = "Guesses left: " + guesses;
+    document.getElementById("div5").innerHTML = "Your guesses so far : " + keyGuessed;
+
+    
+}
+
+
+    </script>
+</body>
+</html>
