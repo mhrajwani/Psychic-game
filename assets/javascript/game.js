@@ -35,6 +35,7 @@ if (userGuess === compGuess){
     keyGuessed = [];
     guesses = 9;
     compGuess = randomLetter();
+    alert("YOU WON")
 
 }else if (userGuess != compGuess && guesses != 1){
     guesses--;
@@ -45,6 +46,7 @@ if (userGuess === compGuess){
     keyGuessed = [];
     guesses = 9;
     compGuess = randomLetter();
+    alert("YOU lOST")
 }}
 
 
